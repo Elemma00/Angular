@@ -1,1 +1,20 @@
-<p>list-items works!</p>
+<h4>Detalle de la factura</h4>
+@if(items.length > 0){
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of items; track $index){
+               <tr row-item [item]="item"></tr>
+            }
+        </tbody>
+    </table>
+} @else {
+    <div class="alert alert-danger"> No tiene items en la Factura!</div>
+}
