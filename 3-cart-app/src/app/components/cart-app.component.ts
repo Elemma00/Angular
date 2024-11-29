@@ -5,6 +5,7 @@ import { ProductService } from '../services/product.service';
 import { CatalogComponent } from './catalog/catalog.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
+import { SharingDataService } from '../services/sharing-data.service';
 
 @Component({
   selector: 'cart-app',
@@ -20,12 +21,13 @@ export class CartAppComponent implements OnInit {
 
   total: number = 0;
 
-  constructor(private service: ProductService) { }
+  constructor(private sharingDataService: SharingDataService, private service: ProductService) { }
 
   ngOnInit(): void {
     this.products = this.service.findAll();
     this.items = JSON.parse(sessionStorage.getItem('cart') || '[]');
     this.calculateTotal();
+    this.onDeleteCart();
   }
 
   onAddCart(product: Product) {
@@ -47,13 +49,16 @@ export class CartAppComponent implements OnInit {
     this.saveSession();
   }
 
-  onDeleteCart(idProduct: number): void {
-    this.items = this.items.filter(item => item.product.id !== idProduct);
-    if (this.items.length === 0) {
-      sessionStorage.removeItem('cart');
-    }
-    this.calculateTotal();
-    this.saveSession();
+  onDeleteCart(): void {
+    this.sharingDataService.idProductEventEmitter.subscribe(id => {
+      console.log(id + 'se ha ejecutado el evento IdProductEventEmitter');
+      this.items = this.items.filter(item => item.product.id !== id);
+      if (this.items.length === 0) {
+        sessionStorage.removeItem('cart');
+      }
+      this.calculateTotal();
+      this.saveSession();
+    });
   }
 
   calculateTotal(): void {
