@@ -50,7 +50,7 @@ export class CartAppComponent implements OnInit {
       this.saveSession();
 
       this.router.navigate(['/cart'],
-        {state: {items: this.items, total: this.total}}
+        { state: { items: this.items, total: this.total } }
       )
       Swal.fire({
         title: "Shopping Cart",
@@ -65,7 +65,7 @@ export class CartAppComponent implements OnInit {
   onDeleteCart(): void {
     this.sharingDataService.idProductEventEmitter.subscribe(id => {
       console.log(id + ' se ha ejecutado el evento IdProductEventEmitter');
-      
+
       Swal.fire({
         title: "Esta seguro que desea eliminar?",
         text: "El producto será quitado del carrito!",
@@ -84,9 +84,9 @@ export class CartAppComponent implements OnInit {
           }
           this.calculateTotal();
           this.saveSession();
-          this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>{
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
             this.router.navigate(['/cart'],
-              {state: {items: this.items, total: this.total}}
+              { state: { items: this.items, total: this.total } }
             )
           })
 
