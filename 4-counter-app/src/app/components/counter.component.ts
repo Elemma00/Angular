@@ -6,6 +6,7 @@ import { decrement, increment, reset } from '../store/items.action';
   selector: 'app-counter',
   imports: [],
   templateUrl: './counter.component.html',
+  standalone: true
 })
 export class CounterComponent {
 
@@ -22,7 +23,7 @@ export class CounterComponent {
 
   increment(): void {
     // this.counter++;
-    this.store.dispatch(increment({add: 10}));
+    this.store.dispatch(increment({add: 1}));
     console.log('incrementando...');
   }
 
