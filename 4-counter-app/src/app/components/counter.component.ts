@@ -22,7 +22,7 @@ export class CounterComponent {
 
   increment(): void {
     // this.counter++;
-    this.store.dispatch(increment());
+    this.store.dispatch(increment({add: 10}));
     console.log('incrementando...');
   }
 
