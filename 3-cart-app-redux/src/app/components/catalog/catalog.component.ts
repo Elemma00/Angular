@@ -5,10 +5,9 @@ import { SharingDataService } from '../../services/sharing-data.service';
 import { ProductCardComponent } from '../product-card/product-card.component';
 
 @Component({
-  selector: 'catalog',
-  standalone: true,
-  imports: [ProductCardComponent],
-  templateUrl: './catalog.component.html',
+    selector: 'catalog',
+    imports: [ProductCardComponent],
+    templateUrl: './catalog.component.html'
 })
 export class CatalogComponent implements OnInit {
 

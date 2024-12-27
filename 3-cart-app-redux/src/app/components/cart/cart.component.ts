@@ -4,10 +4,9 @@ import { Router } from '@angular/router';
 import { SharingDataService } from '../../services/sharing-data.service';
 
 @Component({
-  selector: 'cart',
-  standalone: true,
-  imports: [],
-  templateUrl: './cart.component.html',
+    selector: 'cart',
+    imports: [],
+    templateUrl: './cart.component.html'
 })
 export class CartComponent{
 

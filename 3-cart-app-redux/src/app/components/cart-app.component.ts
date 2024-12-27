@@ -7,10 +7,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import Swal from 'sweetalert2'
 
 @Component({
-  selector: 'cart-app',
-  standalone: true,
-  imports: [NavbarComponent, RouterOutlet],
-  templateUrl: './cart-app.component.html',
+    selector: 'cart-app',
+    imports: [NavbarComponent, RouterOutlet],
+    templateUrl: './cart-app.component.html'
 })
 export class CartAppComponent implements OnInit {
 
